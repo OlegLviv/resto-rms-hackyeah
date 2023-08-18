@@ -1,19 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { UpdateTableDialogComponent } from '../update-table-dialog/update-table-dialog.component';
-import { MatDialog } from '@angular/material';
-import { Table } from '../../../shared/models/table';
-import { ServiceModuleService } from '../../services/service-module.service';
+import { Component, OnInit } from "@angular/core";
+import { UpdateTableDialogComponent } from "../update-table-dialog/update-table-dialog.component";
+import { MatDialog } from "@angular/material";
+import { Table } from "../../../shared/models/table";
+import { ServiceModuleService } from "../../services/service-module.service";
 
 @Component({
-  selector: 'app-tables',
-  templateUrl: './tables.component.html',
-  styleUrls: ['./tables.component.scss']
+  selector: "app-tables",
+  templateUrl: "./tables.component.html",
+  styleUrls: ["./tables.component.scss"],
 })
 export class TablesComponent implements OnInit {
+  tablesData: Table[] = [];
 
-  tablesData: Table[];
-
-  constructor(public dialog: MatDialog, private serviceModuleService: ServiceModuleService) { }
+  constructor(
+    public dialog: MatDialog,
+    private serviceModuleService: ServiceModuleService
+  ) {}
 
   ngOnInit() {
     this.refresh();
@@ -28,12 +30,11 @@ export class TablesComponent implements OnInit {
   updateTableDialog(table: Table) {
     const dialogRef = this.dialog.open(UpdateTableDialogComponent, {
       data: { table: table },
-      width: '80%'
+      width: "80%",
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((_) => {
       this.refresh();
     });
   }
-
 }

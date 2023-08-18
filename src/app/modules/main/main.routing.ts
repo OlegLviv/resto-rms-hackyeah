@@ -1,13 +1,13 @@
-import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
-import { MainComponent } from './main/main.component';
-import { HomeComponent } from './home/home.component';
+import { Routes, RouterModule, PreloadAllModules } from "@angular/router";
+import { MainComponent } from "./main/main.component";
+import { HomeComponent } from "./home/home.component";
 
 const appRoutes: Routes = [
   {
-    path: '',
+    path: "",
     component: MainComponent,
     children: [
-      { path: '', component: HomeComponent },
+      { path: "", component: HomeComponent },
     ]
   }
 ];
